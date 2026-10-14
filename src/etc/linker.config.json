@@ -1,0 +1,23 @@
+{
+	"provideLibs": [	
+		    "libdummy_binary_libhwbinder.a-x86_64-v2.so",
+		    "libdummy_binary_libhwbinder.a.so",
+		    "libdummy_ext_libhwbinder-x86_64-v2.so",
+		    "libdummy_ext_libhwbinder.so",
+		    "libdummy_headers_ext_libhwbinder-x86_64-v2.so",
+		    "libdummy_headers_ext_libhwbinder.so",
+		    "libhwbinder-x86_64-v2.so",
+		    "libhwbinder.so"
+	],
+	"requireLibs": [	
+		    "libbase.so",
+		    "libc++.so",
+		    "libc.so",
+		    "libcutils.so",
+		    "libdl.so",
+		    "liblog.so",
+		    "libm.so",
+		    "libutils.so"
+	],
+	"visible": true
+}
