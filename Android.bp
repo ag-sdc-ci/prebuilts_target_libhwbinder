@@ -16,7 +16,7 @@ cc_library_headers {
         "//apex_available:anyapex",
     ],
     export_include_dirs: [
-        "src/include",
+        "include",
     ],
 }
 
@@ -28,7 +28,7 @@ cc_prebuilt_library {
     host_supported: true,
     check_elf_files: false,
     export_include_dirs: [
-        "src/include",
+        "include",
     ],
     prefer: true,
     apex_available: [
@@ -36,11 +36,23 @@ cc_prebuilt_library {
         "//apex_available:platform",
     ],
     min_sdk_version: "29",
-    shared: {
-        srcs: ["src/lib/libhwbinder.so"],
-    },
-    static: {
-        srcs: ["src/lib/libhwbinder.a"],
+    arch: {
+        x86_64: {
+            shared: {
+                srcs: ["lib64/libhwbinder.so"],
+            },
+            static: {
+                srcs: ["lib64/libhwbinder.a"],
+            },
+        },
+        x86: {
+            shared: {
+                srcs: ["lib/libhwbinder.so"],
+            },
+            static: {
+                srcs: ["lib/libhwbinder.a"],
+            },
+        },
     },
 }
 
@@ -52,7 +64,7 @@ cc_prebuilt_library_static {
     host_supported: true,
     check_elf_files: false,
     export_include_dirs: [
-        "src/include",
+        "include",
     ],
     prefer: true,
     apex_available: [
@@ -65,37 +77,44 @@ cc_prebuilt_library_static {
         "com.android.tethering",
     ],
     min_sdk_version: "29",
-    srcs: ["src/lib/libhwbinder.a"],
+    arch: {
+        x86_64: {
+            srcs: ["lib64/libhwbinder.a"],
+        },
+        x86: {
+            srcs: ["lib/libhwbinder.a"],
+        },
+    },
 }
 
 cc_defaults {
     name: "hwbinder_lto",
     target: {
-    android: {
-    lto: {
-    thin: true,
-    },
-    },
+        android: {
+            lto: {
+                thin: true,
+            },
+        },
     },
     arch: {
-    riscv64: {
-    lto: {
-    thin: false,
-    },
-    },
+        riscv64: {
+            lto: {
+                thin: false,
+            },
+        },
     },
 }
 
 cc_defaults {
     name: "libhwbinder-impl-shared-libs",
     shared_libs: [
-    "libbase",
-    "liblog",
-    "libcutils",
-    "libutils",
+        "libbase",
+        "liblog",
+        "libcutils",
+        "libutils",
     ],
     export_shared_lib_headers: [
-    "libbase",
-    "libutils",
+        "libbase",
+        "libutils",
     ],
 }

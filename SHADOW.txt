@@ -1,6 +1,6 @@
-shadow prebuilt repo: libhwbinder (target, extractive payload, prefixes as-built upstream)
-  upstream: system/libhwbinder
-  api-level: 34 (local ag-build rebuild 2026-10-11, branch 34-20261011)
-  blobs: org.blisslabs.ag.ext.libhwbinder.apex 
-  src: extracted base payload + regenerated root Android.bp (gen_extractive_bp.py)
-  date: 2026-10-11
+shadow prebuilt repo: libhwbinder (target, flattened extractive payload)
+  upstream: system/libhwbinder (LineageOS/android_system_libhwbinder / AOSP)
+  api-level: 34 (branch 34-20261101)
+  payload: flattened root payload (include/, lib64/, lib/) + modernized Android.bp
+  compiler: authentic platform Clang + authentic platform sysroot (/apex/com.android.runtime.dev)
+  date: 2026-11-01
